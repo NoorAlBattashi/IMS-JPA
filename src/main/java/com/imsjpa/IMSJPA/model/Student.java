@@ -1,15 +1,19 @@
 package com.imsjpa.IMSJPA.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "student")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id; // The ID of the student
+    public int id;
     @Column
-    public String name; // The name of the student
+    public String name;
     @Column
-    public String email; // The email of the student
+    @Pattern(regexp = "^[a-z|A-Z|.]+@[a-z|A-Z]+\\.[a-z|A-Z]{2,}$")
+    public String email;
+    @Column
+    public String imageName;
 }
