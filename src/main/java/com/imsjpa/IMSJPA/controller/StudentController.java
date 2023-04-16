@@ -2,6 +2,7 @@ package com.imsjpa.IMSJPA.controller;
 
 import com.imsjpa.IMSJPA.model.Student;
 import com.imsjpa.IMSJPA.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,7 +61,7 @@ public class StudentController {
      * @return The newly created Student object
      */
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student currStudent) {
+    public ResponseEntity<Student> createStudent(@Valid @RequestBody Student currStudent) {
         try {
             Student createdStudent = studentService.createStudent(currStudent);
             return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
